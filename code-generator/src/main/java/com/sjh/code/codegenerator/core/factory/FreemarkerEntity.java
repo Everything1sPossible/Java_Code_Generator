@@ -1,4 +1,4 @@
-package com.sjh.code.codegenerator.core;
+package com.sjh.code.codegenerator.core.factory;
 
 
 /**

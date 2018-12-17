@@ -1,7 +1,7 @@
 package com.sjh.code.codegenerator.test;
 
-import com.sjh.code.codegenerator.core.FreemarkerEntity;
-import com.sjh.code.codegenerator.core.JavaTemplateFactoryEnum;
+import com.sjh.code.codegenerator.core.factory.FreemarkerEntity;
+import com.sjh.code.codegenerator.core.factory.JavaTemplateFactoryEnum;
 
 /**
  * @author sjh
