@@ -19,7 +19,7 @@ import java.util.Map;
 public abstract class AbstractFreemarkerTemplate implements JavaTemplateInterface{
     
     /** 默认模板目录*/
-    private static final String DEFAULT_TEMPLATE_DRIECTORY = "src/main/resources/templates/freemarker";
+    private static final String DEFAULT_TEMPLATE_DIRECTORY = "src/main/resources/templates/freemarker";
     /** 默认编码*/
     private static final String ENCODING = "UTF-8";
     /** Freemarker模板名称*/
@@ -49,7 +49,7 @@ public abstract class AbstractFreemarkerTemplate implements JavaTemplateInterfac
         Writer writer = null;
         try {
             writer = new FileWriter(nFile);
-            Template template = getConfiguration(DEFAULT_TEMPLATE_DRIECTORY).getTemplate(this.freemarkerTemplateName, ENCODING);
+            Template template = getConfiguration(DEFAULT_TEMPLATE_DIRECTORY).getTemplate(this.freemarkerTemplateName, ENCODING);
             template.process(parameterMap, writer);
             writer.close();
         } catch (TemplateException | IOException e) {
