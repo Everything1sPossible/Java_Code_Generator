@@ -52,6 +52,7 @@ public abstract class AbstractFreemarkerTemplate implements JavaTemplateInterfac
             Template template = getConfiguration(DEFAULT_TEMPLATE_DIRECTORY).getTemplate(this.freemarkerTemplateName, ENCODING);
             template.process(parameterMap, writer);
             writer.close();
+            System.out.println("==============创建Java文件结束================");
         } catch (TemplateException | IOException e) {
             throw new RuntimeException(e);
         } 

@@ -2,6 +2,7 @@ package com.sjh.code.codegenerator.core.factory;
 
 
 import com.sjh.code.codegenerator.core.util.JsonUtil;
+import com.sjh.code.codegenerator.core.util.StringUtil;
 
 import java.util.Map;
 
@@ -12,7 +13,7 @@ import java.util.Map;
  */
 public class FreemarkerContext {
 
-    /** 文件名称*/
+    /** 基础类名称，用于实体类，其它层的类名称自定义*/
     private String fileName;
 
     /** 实体类字段内容，json格式（key：字段名称，value：字段类型）*/
@@ -34,7 +35,8 @@ public class FreemarkerContext {
     private Map<String, Object> fieldsMap;
 
     public void setFileName(String fileName) {
-        this.fileName = fileName;
+        /** 将类名称首字母大写*/
+        this.fileName = StringUtil.firstToUpper(fileName);
     }
 
     public void setFieldsCommend(String fieldsCommend) {

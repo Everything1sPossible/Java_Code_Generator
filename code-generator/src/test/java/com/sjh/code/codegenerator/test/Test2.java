@@ -12,9 +12,12 @@ import java.util.Map;
  */
 public class Test2 {
     public static void main(String[] args) {
-        String json = "{\"name\" : \"张三\", \"sex\" : \"男\"}";
-        Map map = JsonUtil.jsonToMap(json);
-        System.out.println(map.get("name"));
-        System.out.println(map.get("sex"));
+//        String json = "{\"name\" : \"张三\", \"sex\" : \"男\"}";
+//        Map map = JsonUtil.jsonToMap(json);
+//        System.out.println(map.get("name"));
+//        System.out.println(map.get("sex"));
+
+        String name = "nAme";
+        System.out.println(name.substring(0, 1).toUpperCase() + name.substring(1));
     }
 }

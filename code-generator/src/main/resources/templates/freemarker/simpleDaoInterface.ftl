@@ -2,25 +2,19 @@
 package ${package};
 </#if>
 import java.util.*;
+import ${entityPackageName}.${entityFileName};
 
 /**
  * @author sjh
  */
-public class ${fileName} {
-    <#if fields?exists>
-        <#list fields?keys as key>
-    private ${fields[key]} ${key};
-        </#list>
-    </#if>
-    <#if fields?exists>
-        <#list fields?keys as key>
-    public ${fields[key]} get${key?cap_first}() {
-        return ${key};
-    }
+public interface ${fileName} {
 
-    public void set${key?cap_first}(${fields[key]} ${key}) {
-        this.${key} = ${key};
-    }
-        </#list>
-    </#if>
+    public List<${entityFileName}> select${entityFileName}(${entityFileName} ${entityFileName?uncap_first});
+
+    public int add${entityFileName}(${entityFileName} ${entityFileName?uncap_first});
+
+    public int update${entityFileName}(${entityFileName} ${entityFileName?uncap_first});
+
+    public int delete${entityFileName}(${entityFileName} ${entityFileName?uncap_first});
+
 }

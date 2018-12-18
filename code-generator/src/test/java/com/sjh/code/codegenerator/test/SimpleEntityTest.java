@@ -2,6 +2,7 @@ package com.sjh.code.codegenerator.test;
 
 import com.sjh.code.codegenerator.core.factory.FreemarkerContext;
 import com.sjh.code.codegenerator.core.factory.JavaTemplateFactoryEnum;
+import com.sjh.code.codegenerator.simple.entity.TestEntity;
 
 /**
  * @author sjh
@@ -13,9 +14,13 @@ public class SimpleEntityTest {
         String fieldsJson = "{\"name\" : \"String\", \"sex\" : \"String\", \"age\" : \"Integer\"}";
         FreemarkerContext freemarkerContext = new FreemarkerContext();
         freemarkerContext.setFileName("testEntity");
-        freemarkerContext.setEntityFilePath("D:/code-generator/main/java/com/sjh/code/codegenerator/demo");
+        freemarkerContext.setEntityFilePath("D:/GitHub/Code_Generator/code-generator/src/main/java/com/sjh/code/codegenerator/simple/entity");
+        freemarkerContext.setDaoFilePath("D:/GitHub/Code_Generator/code-generator/src/main/java/com/sjh/code/codegenerator/simple/dao");
         freemarkerContext.setFieldsCommend(fieldsJson);
-        JavaTemplateFactoryEnum.SIMPLEENTITY.buildJavaTemplateInterface()
+        JavaTemplateFactoryEnum.SIMPLE_ENTITY.buildJavaTemplateInterface()
+                .createJavaFile(freemarkerContext);
+
+        JavaTemplateFactoryEnum.SIMPLE_DAO_INTERFACE.buildJavaTemplateInterface()
                 .createJavaFile(freemarkerContext);
     }
 }

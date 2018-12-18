@@ -8,18 +8,18 @@ import java.util.*;
  */
 public class ${fileName} {
     <#if fields?exists>
-        <#list fields?keys as key>
-    private ${fields[key]} ${key};
+        <#list fields?keys as fieldName>
+    private ${fields[fieldName]} ${fieldName};
         </#list>
     </#if>
     <#if fields?exists>
-        <#list fields?keys as key>
-    public ${fields[key]} get${key?cap_first}() {
-        return ${key};
+        <#list fields?keys as fieldName>
+    public ${fields[fieldName]} get${fieldName}() {
+        return ${fieldName};
     }
 
-    public void set${key?cap_first}(${fields[key]} ${key}) {
-        this.${key} = ${key};
+    public void set${fieldName}(${fields[fieldName]} ${fieldName}) {
+        this.${fieldName} = ${fieldName};
     }
         </#list>
     </#if>
