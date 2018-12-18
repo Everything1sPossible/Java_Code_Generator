@@ -26,11 +26,10 @@ public class SimpleEntityJavaTemplate extends AbstractFreemarkerTemplate {
     }
 
     @Override
-    protected Map<String, Object> createParameterMap(FreemarkerEntity freemarkerEntity) {
-        String fieldsCommend = freemarkerEntity.getFieldsCommend();
-        String entityFilePath = freemarkerEntity.getEntityFilePath();
+    protected Map<String, Object> createParameterMap(FreemarkerContext freemarkerContext) {
+        String entityFilePath = freemarkerContext.getEntityFilePath();
         String packageName = FilePathUtil.cutPathToPackage(entityFilePath);
-        Map<String, Object> fieldsMap = JsonUtil.jsonToMap(fieldsCommend);
+        Map<String, Object> fieldsMap = freemarkerContext.getFieldsMap();
         Map<String, Object> parameterMap = new HashMap<>();
         parameterMap.put("package", packageName);
         parameterMap.put("fields", fieldsMap);
@@ -39,12 +38,12 @@ public class SimpleEntityJavaTemplate extends AbstractFreemarkerTemplate {
 
 
     @Override
-    protected String getDirPath(FreemarkerEntity freemarkerEntity) {
-        return freemarkerEntity.getEntityFilePath();
+    protected String getDirPath(FreemarkerContext freemarkerContext) {
+        return freemarkerContext.getEntityFilePath();
     }
 
     @Override
-    protected String getJavaFileName(FreemarkerEntity freemarkerEntity) {
-        return freemarkerEntity.getFileName() + SUFFIX_JAVA;
+    protected String getJavaFileName(FreemarkerContext freemarkerContext) {
+        return freemarkerContext.getFileName() + SUFFIX_JAVA;
     }
 }

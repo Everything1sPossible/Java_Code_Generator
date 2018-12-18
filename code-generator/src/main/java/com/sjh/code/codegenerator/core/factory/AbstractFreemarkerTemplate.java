@@ -30,14 +30,14 @@ public abstract class AbstractFreemarkerTemplate implements JavaTemplateInterfac
     }
 
     @Override
-    public void createJavaFile(FreemarkerEntity freemarkerEntity) {
+    public void createJavaFile(FreemarkerContext freemarkerContext) {
         System.out.println("==============开始创建Java文件================");
-        Map<String, Object> parameterMap = createParameterMap(freemarkerEntity);
+        Map<String, Object> parameterMap = createParameterMap(freemarkerContext);
         //Java文件名称
-        String javaFileName = getJavaFileName(freemarkerEntity);
+        String javaFileName = getJavaFileName(freemarkerContext);
         parameterMap.put("fileName", FilePathUtil.cutJavaSuffix(javaFileName));
         //文件夹路径
-        String dirPath = getDirPath(freemarkerEntity);
+        String dirPath = getDirPath(freemarkerContext);
         File dirFile = new File(dirPath);
         if (!dirFile.exists()) {
             dirFile.mkdirs();
@@ -62,21 +62,21 @@ public abstract class AbstractFreemarkerTemplate implements JavaTemplateInterfac
      * @author sjh
      * @date 2018/12/14 22:45
      */
-    protected abstract Map<String, Object> createParameterMap(FreemarkerEntity freemarkerEntity);
+    protected abstract Map<String, Object> createParameterMap(FreemarkerContext freemarkerContext);
     
     /**  
      * @Description: 获取生成后的Java文件夹路径
      * @author sjh
      * @date 2018/12/15 0:09
      */
-    protected abstract String getDirPath(FreemarkerEntity freemarkerEntity);
+    protected abstract String getDirPath(FreemarkerContext freemarkerContext);
 
     /**
      * @Description: 获取生成后的Java文件名称,要带上后缀.java
      * @author sjh
      * @date 2018/12/15 0:26
      */
-    protected abstract String getJavaFileName(FreemarkerEntity freemarkerEntity);
+    protected abstract String getJavaFileName(FreemarkerContext freemarkerContext);
 
     private Configuration getConfiguration(String templateDirectory) {
         Configuration configuration = new Configuration(Configuration.VERSION_2_3_28);

@@ -13,15 +13,29 @@ public enum JavaTemplateFactoryEnum {
             return new SimpleEntityJavaTemplate();
         }
     },
-    /** 普通Service类文件枚举*/
-    SIMPLESERVICE {
+    /** 普通Service接口类文件枚举*/
+    SIMPLESERVICEINTERFACE {
         @Override
         public JavaTemplateInterface buildJavaTemplateInterface() {
             return null;
         }
     },
-    /** 普通dao类文件枚举*/
-    SIMPLEDAO {
+    /** 普通Service接口实现类文件枚举*/
+    SIMPLESERVICEINTERFACEIMPL {
+        @Override
+        public JavaTemplateInterface buildJavaTemplateInterface() {
+            return null;
+        }
+    },
+    /** 普通dao接口类文件枚举*/
+    SIMPLEDAOINTERFACE {
+        @Override
+        public JavaTemplateInterface buildJavaTemplateInterface() {
+            return null;
+        }
+    },
+    /** Mybatis XML文件枚举*/
+    MYBATISSQLXML {
         @Override
         public JavaTemplateInterface buildJavaTemplateInterface() {
             return null;

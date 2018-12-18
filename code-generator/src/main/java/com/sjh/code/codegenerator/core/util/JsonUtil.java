@@ -15,6 +15,10 @@ public class JsonUtil {
 
     private static ObjectMapper mapper = new ObjectMapper();
 
+    /**
+     * @Description: 将json字符串转为Map
+     * @author sjh
+     */
     public static Map<String, Object> jsonToMap(String json) {
         Map<String, Object> map = null;
         try {
@@ -24,4 +28,19 @@ public class JsonUtil {
         }
         return map;
     }
+
+    /**
+     * @Description: 判断字符串是否为json格式
+     * @author sjh
+     */
+    public static boolean isJsonValid(String target) {
+        try {
+            mapper.readTree(target);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
 }

@@ -1,12 +1,16 @@
 package com.sjh.code.codegenerator.core.factory;
 
 
+import com.sjh.code.codegenerator.core.util.JsonUtil;
+
+import java.util.Map;
+
 /**
  * @author sjh
  * @Description: 上下文实体类
  * @date 2018/12/14 22:04
  */
-public class FreemarkerEntity {
+public class FreemarkerContext {
 
     /** 文件名称*/
     private String fileName;
@@ -26,12 +30,21 @@ public class FreemarkerEntity {
     /** MyBatis XML文件路径*/
     private String mybatisXmlPath;
 
+    /** 字段Map，key：字段名称，value：字段类型*/
+    private Map<String, Object> fieldsMap;
+
     public void setFileName(String fileName) {
         this.fileName = fileName;
     }
 
     public void setFieldsCommend(String fieldsCommend) {
+        if (!JsonUtil.isJsonValid(fieldsCommend)) {
+            throw new RuntimeException("请检查您的字段是否为json格式！");
+        }
         this.fieldsCommend = fieldsCommend;
+        /** 将字段内容转化为map，后续使用直接调用getFieldsMap（）方法*/
+        Map<String, Object> fieldsMap = JsonUtil.jsonToMap(fieldsCommend);
+        setFieldsMap(fieldsMap);
     }
 
     public void setEntityFilePath(String entityFilePath) {
@@ -54,10 +67,6 @@ public class FreemarkerEntity {
         return fileName;
     }
 
-    public String getFieldsCommend() {
-        return fieldsCommend;
-    }
-
     public String getEntityFilePath() {
         return entityFilePath;
     }
@@ -72,5 +81,13 @@ public class FreemarkerEntity {
 
     public String getMybatisXmlPath() {
         return mybatisXmlPath;
+    }
+
+    public Map<String, Object> getFieldsMap() {
+        return fieldsMap;
+    }
+
+    public void setFieldsMap(Map<String, Object> fieldsMap) {
+        this.fieldsMap = fieldsMap;
     }
 }

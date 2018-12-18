@@ -1,6 +1,6 @@
 package com.sjh.code.codegenerator.test;
 
-import com.sjh.code.codegenerator.core.factory.FreemarkerEntity;
+import com.sjh.code.codegenerator.core.factory.FreemarkerContext;
 import com.sjh.code.codegenerator.core.factory.JavaTemplateFactoryEnum;
 
 /**
@@ -11,11 +11,11 @@ import com.sjh.code.codegenerator.core.factory.JavaTemplateFactoryEnum;
 public class SimpleEntityTest {
     public static void main(String[] args) {
         String fieldsJson = "{\"name\" : \"String\", \"sex\" : \"String\", \"age\" : \"Integer\"}";
-        FreemarkerEntity freemarkerEntity = new FreemarkerEntity();
-        freemarkerEntity.setFileName("testEntity");
-        freemarkerEntity.setEntityFilePath("D:/code-generator/main/java/com/sjh/code/codegenerator/demo");
-        freemarkerEntity.setFieldsCommend(fieldsJson);
+        FreemarkerContext freemarkerContext = new FreemarkerContext();
+        freemarkerContext.setFileName("testEntity");
+        freemarkerContext.setEntityFilePath("D:/code-generator/main/java/com/sjh/code/codegenerator/demo");
+        freemarkerContext.setFieldsCommend(fieldsJson);
         JavaTemplateFactoryEnum.SIMPLEENTITY.buildJavaTemplateInterface()
-                .createJavaFile(freemarkerEntity);
+                .createJavaFile(freemarkerContext);
     }
 }

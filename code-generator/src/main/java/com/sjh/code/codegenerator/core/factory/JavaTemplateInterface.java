@@ -6,5 +6,5 @@ package com.sjh.code.codegenerator.core.factory;
  * @date 2018/12/14 22:39
  */
 public interface JavaTemplateInterface {
-    void createJavaFile(FreemarkerEntity freemarkerEntity);
+    void createJavaFile(FreemarkerContext freemarkerContext);
 }
