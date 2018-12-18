@@ -21,7 +21,14 @@ public abstract class AbstractFreemarkerTemplate implements JavaTemplateInterfac
     /** 默认模板目录*/
     private static final String DEFAULT_TEMPLATE_DIRECTORY = "src/main/resources/templates/freemarker";
     /** 默认编码*/
-    private static final String ENCODING = "UTF-8";
+    protected static final String ENCODING = "UTF-8";
+    /** Java文件后缀*/
+    protected static final String SUFFIX_JAVA = ".java";
+    /** XML文件后缀*/
+    protected static final String SUFFIX_XML = ".xml";
+    /** DAO接口名称后缀*/
+    protected static final String DEFAULT_DAO_SUFFIX_NAME = "Mapper";
+
     /** Freemarker模板名称*/
     private String freemarkerTemplateName;
 

@@ -1,5 +1,7 @@
 package com.sjh.code.codegenerator.core.factory;
 
+import com.sjh.code.codegenerator.core.sql.MybatisXmlSqlBuilder;
+import com.sjh.code.codegenerator.core.sql.SqlBuilder;
 import com.sjh.code.codegenerator.core.util.FilePathUtil;
 
 import java.util.HashMap;
@@ -14,7 +16,6 @@ public class MybatisSqlXmlJavaTemplate extends AbstractFreemarkerTemplate {
 
     /** 默认Freemarker模板名称*/
     private static final String DEFAULT_FTL_NAME = "mybatisSqlXml.ftl";
-    private static final String SUFFIX_XML = ".xml";
 
     public MybatisSqlXmlJavaTemplate(String freemarkerTemplateName) {
         super(freemarkerTemplateName);
@@ -26,23 +27,40 @@ public class MybatisSqlXmlJavaTemplate extends AbstractFreemarkerTemplate {
 
     @Override
     protected Map<String, Object> createParameterMap(FreemarkerContext freemarkerContext) {
-        String entityFilePath = freemarkerContext.getEntityFilePath();
-        String packageName = FilePathUtil.cutPathToPackage(entityFilePath);
-        Map<String, Object> fieldsMap = freemarkerContext.getFieldsMap();
         Map<String, Object> parameterMap = new HashMap<>();
-        parameterMap.put("package", packageName);
-        parameterMap.put("fields", fieldsMap);
+        SqlBuilder builder = new MybatisXmlSqlBuilder(freemarkerContext);
+        String selectSql = builder.buildSelectSql();
+        String updateSql = builder.buildUpdateSql();
+        String insertSql = builder.buildInsertSql();
+        String deleteSql = builder.buildDeleteSql();
+        String entityFileName = freemarkerContext.getFileName();
+        String selectId = "select" + entityFileName;
+        String updateId = "update" + entityFileName;
+        String deleteId = "delete" + entityFileName;
+        String insertId = "insert" + entityFileName;
+        parameterMap.put("selectSql", selectSql);
+        parameterMap.put("updateSql", updateSql);
+        parameterMap.put("insertSql", insertSql);
+        parameterMap.put("deleteSql", deleteSql);
+        parameterMap.put("selectId", selectId);
+        parameterMap.put("updateId", updateId);
+        parameterMap.put("deleteId", deleteId);
+        parameterMap.put("insertId", insertId);
+        String daoFilePath = freemarkerContext.getDaoFilePath();
+        String daoPackageName = FilePathUtil.cutPathToPackage(daoFilePath);
+        String namespace = daoPackageName + entityFileName + DEFAULT_DAO_SUFFIX_NAME;
+        parameterMap.put("namespace", namespace);
         return parameterMap;
     }
 
 
     @Override
     protected String getDirPath(FreemarkerContext freemarkerContext) {
-        return freemarkerContext.getEntityFilePath();
+        return freemarkerContext.getMybatisXmlPath();
     }
 
     @Override
     protected String getJavaFileName(FreemarkerContext freemarkerContext) {
-        return freemarkerContext.getFileName() + SUFFIX_XML;
+        return freemarkerContext.getFileName() + DEFAULT_DAO_SUFFIX_NAME+ SUFFIX_XML;
     }
 }

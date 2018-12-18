@@ -16,7 +16,6 @@ public class SimpleEntityJavaTemplate extends AbstractFreemarkerTemplate {
 
     /** 默认Freemarker模板名称*/
     private static final String DEFAULT_FTL_NAME = "simpleEntity.ftl";
-    private static final String SUFFIX_JAVA = ".java";
 
     public SimpleEntityJavaTemplate(String freemarkerTemplateName) {
         super(freemarkerTemplateName);

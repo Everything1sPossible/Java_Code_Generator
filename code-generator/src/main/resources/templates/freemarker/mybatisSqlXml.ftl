@@ -1,26 +1,21 @@
-<#if package?? && package != "">
-package ${package};
-</#if>
-import java.util.*;
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="${namespace}">
 
-/**
- * @author sjh
- */
-public class ${fileName} {
-    <#if fields?exists>
-        <#list fields?keys as key>
-    private ${fields[key]} ${key};
-        </#list>
-    </#if>
-    <#if fields?exists>
-        <#list fields?keys as key>
-    public ${fields[key]} get${key?cap_first}() {
-        return ${key};
-    }
+    <select id="${selectId}">
+        ${selectSql}
+    </select>
 
-    public void set${key?cap_first}(${fields[key]} ${key}) {
-        this.${key} = ${key};
-    }
-        </#list>
-    </#if>
-}
+    <insert id="${insertId}">
+        ${insertSql}
+    </insert>
+
+    <delete id="${deleteId}">
+        ${deleteSql}
+    </delete>
+
+    <update id="${updateId}">
+        ${updateSql}
+    </update>
+
+</mapper>

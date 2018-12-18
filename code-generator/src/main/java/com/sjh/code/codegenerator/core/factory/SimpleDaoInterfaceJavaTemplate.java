@@ -14,8 +14,6 @@ public class SimpleDaoInterfaceJavaTemplate extends AbstractFreemarkerTemplate {
 
     /** 默认Freemarker模板名称*/
     private static final String DEFAULT_FTL_NAME = "simpleDaoInterface.ftl";
-    private static final String SUFFIX_JAVA = ".java";
-    private static final String DEFAULT_MIDDLE_NAME = "Dao";
 
     public SimpleDaoInterfaceJavaTemplate(String freemarkerTemplateName) {
         super(freemarkerTemplateName);
@@ -47,6 +45,6 @@ public class SimpleDaoInterfaceJavaTemplate extends AbstractFreemarkerTemplate {
 
     @Override
     protected String getJavaFileName(FreemarkerContext freemarkerContext) {
-        return freemarkerContext.getFileName() + DEFAULT_MIDDLE_NAME + SUFFIX_JAVA;
+        return freemarkerContext.getFileName() + DEFAULT_DAO_SUFFIX_NAME + SUFFIX_JAVA;
     }
 }
