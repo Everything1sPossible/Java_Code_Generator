@@ -2,7 +2,6 @@ package com.sjh.code.codegenerator.test;
 
 import com.sjh.code.codegenerator.core.factory.FreemarkerContext;
 import com.sjh.code.codegenerator.core.factory.JavaTemplateFactoryEnum;
-import com.sjh.code.codegenerator.simple.entity.TestEntity;
 
 /**
  * @author sjh

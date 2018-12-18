@@ -1,6 +1,5 @@
 package com.sjh.code.codegenerator.test;
 
-import com.sjh.code.codegenerator.simple.entity.TestEntity;
 
 /**
  * @author sjh
@@ -9,8 +8,5 @@ import com.sjh.code.codegenerator.simple.entity.TestEntity;
  */
 public class Test3 {
     public static void main(String[] args) {
-        TestEntity testEntity = new TestEntity();
-        testEntity.setname("name");
-        System.out.println(testEntity.getname());
     }
 }

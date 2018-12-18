@@ -1,28 +1,26 @@
 package com.sjh.code.codegenerator.core.factory;
 
-import com.sjh.code.codegenerator.core.sql.SqlBuilderBase;
 import com.sjh.code.codegenerator.core.util.FilePathUtil;
-import com.sjh.code.codegenerator.core.util.JsonUtil;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * @author sjh
- * @Description: 普通实体类文件生成类
+ * @Description: Mybatis XML文件生成类，与DAO接口类相对应
  * @date 2018/12/14 22:58
  */
-public class SimpleEntityJavaTemplate extends AbstractFreemarkerTemplate {
+public class MybatisSqlXmlJavaTemplate extends AbstractFreemarkerTemplate {
 
     /** 默认Freemarker模板名称*/
-    private static final String DEFAULT_FTL_NAME = "simpleEntity.ftl";
-    private static final String SUFFIX_JAVA = ".java";
+    private static final String DEFAULT_FTL_NAME = "mybatisSqlXml.ftl";
+    private static final String SUFFIX_XML = ".xml";
 
-    public SimpleEntityJavaTemplate(String freemarkerTemplateName) {
+    public MybatisSqlXmlJavaTemplate(String freemarkerTemplateName) {
         super(freemarkerTemplateName);
     }
 
-    public SimpleEntityJavaTemplate() {
+    public MybatisSqlXmlJavaTemplate() {
         super(DEFAULT_FTL_NAME);
     }
 
@@ -45,6 +43,6 @@ public class SimpleEntityJavaTemplate extends AbstractFreemarkerTemplate {
 
     @Override
     protected String getJavaFileName(FreemarkerContext freemarkerContext) {
-        return freemarkerContext.getFileName() + SUFFIX_JAVA;
+        return freemarkerContext.getFileName() + SUFFIX_XML;
     }
 }

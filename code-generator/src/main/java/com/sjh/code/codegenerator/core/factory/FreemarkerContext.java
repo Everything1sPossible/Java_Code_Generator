@@ -13,7 +13,10 @@ import java.util.Map;
  */
 public class FreemarkerContext {
 
-    /** 基础类名称，用于实体类，其它层的类名称自定义*/
+    /**
+     * 基础类名称，用于实体类，其它层的类名称自定义
+     * 后续自动生成的SQL表名默认就是这个名称。
+     * */
     private String fileName;
 
     /** 实体类字段内容，json格式（key：字段名称，value：字段类型）*/
