@@ -38,7 +38,7 @@ public enum JavaTemplateFactoryEnum {
     MYBATIS_SQL_XML {
         @Override
         public JavaTemplateInterface buildJavaTemplateInterface() {
-            return null;
+            return new MybatisSqlXmlJavaTemplate();
         }
     };
 

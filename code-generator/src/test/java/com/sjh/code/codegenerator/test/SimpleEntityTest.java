@@ -15,11 +15,15 @@ public class SimpleEntityTest {
         freemarkerContext.setFileName("testEntity");
         freemarkerContext.setEntityFilePath("D:/GitHub/Code_Generator/code-generator/src/main/java/com/sjh/code/codegenerator/simple/entity");
         freemarkerContext.setDaoFilePath("D:/GitHub/Code_Generator/code-generator/src/main/java/com/sjh/code/codegenerator/simple/dao");
+        freemarkerContext.setMybatisXmlPath("D:/GitHub/Code_Generator/code-generator/src/main/java/com/sjh/code/codegenerator/simple/dao");
         freemarkerContext.setFieldsCommend(fieldsJson);
         JavaTemplateFactoryEnum.SIMPLE_ENTITY.buildJavaTemplateInterface()
                 .createJavaFile(freemarkerContext);
 
         JavaTemplateFactoryEnum.SIMPLE_DAO_INTERFACE.buildJavaTemplateInterface()
+                .createJavaFile(freemarkerContext);
+
+        JavaTemplateFactoryEnum.MYBATIS_SQL_XML.buildJavaTemplateInterface()
                 .createJavaFile(freemarkerContext);
     }
 }

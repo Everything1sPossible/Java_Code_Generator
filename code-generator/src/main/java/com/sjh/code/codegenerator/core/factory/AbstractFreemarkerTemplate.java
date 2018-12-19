@@ -1,7 +1,7 @@
 package com.sjh.code.codegenerator.core.factory;
 
 import com.sjh.code.codegenerator.core.util.FilePathUtil;
-import freemarker.template.Configuration;
+import com.sjh.code.codegenerator.core.util.FreemarkerConfigureUtil;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
@@ -18,8 +18,6 @@ import java.util.Map;
  */
 public abstract class AbstractFreemarkerTemplate implements JavaTemplateInterface{
     
-    /** 默认模板目录*/
-    private static final String DEFAULT_TEMPLATE_DIRECTORY = "src/main/resources/templates/freemarker";
     /** 默认编码*/
     protected static final String ENCODING = "UTF-8";
     /** Java文件后缀*/
@@ -56,7 +54,7 @@ public abstract class AbstractFreemarkerTemplate implements JavaTemplateInterfac
         Writer writer = null;
         try {
             writer = new FileWriter(nFile);
-            Template template = getConfiguration(DEFAULT_TEMPLATE_DIRECTORY).getTemplate(this.freemarkerTemplateName, ENCODING);
+            Template template = FreemarkerConfigureUtil.getConfiguration().getTemplate(this.freemarkerTemplateName, ENCODING);
             template.process(parameterMap, writer);
             writer.close();
             System.out.println("==============创建Java文件结束================");
@@ -86,14 +84,4 @@ public abstract class AbstractFreemarkerTemplate implements JavaTemplateInterfac
      */
     protected abstract String getJavaFileName(FreemarkerContext freemarkerContext);
 
-    private Configuration getConfiguration(String templateDirectory) {
-        Configuration configuration = new Configuration(Configuration.VERSION_2_3_28);
-        try {
-            configuration.setTagSyntax(Configuration.AUTO_DETECT_TAG_SYNTAX);
-            configuration.setDirectoryForTemplateLoading(new File(templateDirectory));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        return configuration;
-    }
 }

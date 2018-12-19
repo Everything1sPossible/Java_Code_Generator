@@ -1,8 +1,6 @@
 package com.sjh.code.codegenerator.core.factory;
 
-import com.sjh.code.codegenerator.core.sql.SqlBuilderBase;
 import com.sjh.code.codegenerator.core.util.FilePathUtil;
-import com.sjh.code.codegenerator.core.util.JsonUtil;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -48,7 +48,7 @@ public class MybatisSqlXmlJavaTemplate extends AbstractFreemarkerTemplate {
         parameterMap.put("insertId", insertId);
         String daoFilePath = freemarkerContext.getDaoFilePath();
         String daoPackageName = FilePathUtil.cutPathToPackage(daoFilePath);
-        String namespace = daoPackageName + entityFileName + DEFAULT_DAO_SUFFIX_NAME;
+        String namespace = daoPackageName + "." + entityFileName + DEFAULT_DAO_SUFFIX_NAME;
         parameterMap.put("namespace", namespace);
         return parameterMap;
     }
