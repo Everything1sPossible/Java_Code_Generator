@@ -15,10 +15,6 @@ public class SimpleDaoInterfaceJavaTemplate extends AbstractFreemarkerTemplate {
     /** 默认Freemarker模板名称*/
     private static final String DEFAULT_FTL_NAME = "simpleDaoInterface.ftl";
 
-    public SimpleDaoInterfaceJavaTemplate(String freemarkerTemplateName) {
-        super(freemarkerTemplateName);
-    }
-
     public SimpleDaoInterfaceJavaTemplate() {
         super(DEFAULT_FTL_NAME);
     }

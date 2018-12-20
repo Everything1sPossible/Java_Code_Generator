@@ -22,7 +22,11 @@ public class FreemarkerContext {
     /** 实体类字段内容，json格式（key：字段名称，value：字段类型）*/
     private String fieldsCommend;
 
-    /** 实体类路径，格式为：D:/IdeaProjects/code-generator/src/main/java/com/sjh/code/codegenerator/demo*/
+    /**
+     * 实体类路径
+     * 格式为：D:/IdeaProjects/code-generator/src/main/java/com/sjh/code/codegenerator/demo
+     * 或者：D:\IdeaProjects\code-generator\...
+     * */
     private String entityFilePath;
 
     /** service类路径，格式同上*/
@@ -36,6 +40,12 @@ public class FreemarkerContext {
 
     /** 字段Map，key：字段名称，value：字段类型*/
     private Map<String, Object> fieldsMap;
+
+    /** 是否生成Dao接口文件，默认true*/
+    private boolean isCreateDaoFile = true;
+
+    /** 是否生成Mybatis XML文件，默认true*/
+    private boolean isCreateMybatisXmlFile = true;
 
     public void setFileName(String fileName) {
         /** 将类名称首字母大写*/
@@ -53,19 +63,19 @@ public class FreemarkerContext {
     }
 
     public void setEntityFilePath(String entityFilePath) {
-        this.entityFilePath = entityFilePath;
+        this.entityFilePath = replace(entityFilePath);
     }
 
     public void setServiceFilePath(String serviceFilePath) {
-        this.serviceFilePath = serviceFilePath;
+        this.serviceFilePath = replace(serviceFilePath);
     }
 
     public void setDaoFilePath(String daoFilePath) {
-        this.daoFilePath = daoFilePath;
+        this.daoFilePath = replace(daoFilePath);
     }
 
     public void setMybatisXmlPath(String mybatisXmlPath) {
-        this.mybatisXmlPath = mybatisXmlPath;
+        this.mybatisXmlPath = replace(mybatisXmlPath);
     }
 
     public String getFileName() {
@@ -94,5 +104,26 @@ public class FreemarkerContext {
 
     public void setFieldsMap(Map<String, Object> fieldsMap) {
         this.fieldsMap = fieldsMap;
+    }
+
+    public void setCreateDaoFile(boolean createDaoFile) {
+        isCreateDaoFile = createDaoFile;
+    }
+
+    public void setCreateMybatisXmlFile(boolean createMybatisXmlFile) {
+        isCreateMybatisXmlFile = createMybatisXmlFile;
+    }
+
+    public boolean isCreateDaoFile() {
+        return isCreateDaoFile;
+    }
+
+    public boolean isCreateMybatisXmlFile() {
+        return isCreateMybatisXmlFile;
+    }
+
+    /** 将URL中的“\”替换成“/”*/
+    private String replace(String prefix) {
+        return prefix.replace("\\", "/");
     }
 }

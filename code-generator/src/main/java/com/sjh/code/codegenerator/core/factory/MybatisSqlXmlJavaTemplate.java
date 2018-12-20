@@ -17,10 +17,6 @@ public class MybatisSqlXmlJavaTemplate extends AbstractFreemarkerTemplate {
     /** 默认Freemarker模板名称*/
     private static final String DEFAULT_FTL_NAME = "mybatisSqlXml.ftl";
 
-    public MybatisSqlXmlJavaTemplate(String freemarkerTemplateName) {
-        super(freemarkerTemplateName);
-    }
-
     public MybatisSqlXmlJavaTemplate() {
         super(DEFAULT_FTL_NAME);
     }
