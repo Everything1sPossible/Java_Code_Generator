@@ -16,8 +16,8 @@ public class JdbcWrapperTest {
         JdbcContext jdbcContext = new JdbcContext("com.mysql.cj.jdbc.Driver",
                 /** 6.x+连接串需加上时区*/
                 "jdbc:mysql://127.0.0.1:3306/mytest?characterEncoding=UTF-8&serverTimezone=Asia/Shanghai",
-                "root",
-                "123456");
+                "",
+                "");
         jdbcContext.setCatalog("mytest");
         JdbcWrapperImpl wrapper = new JdbcWrapperImpl();
         List<JdbcTable> jdbcTables = wrapper.getTables(jdbcContext);
