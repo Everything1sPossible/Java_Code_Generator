@@ -12,7 +12,7 @@ import java.util.List;
 public class JdbcWrapperImpl implements JdbcWrapper {
 
     private final ThreadLocal<Connection> connectionThreadLocal = new ThreadLocal<>();
-    private static final String tableType = "TABLE";
+    private static final String TABLE_TYPE = "TABLE";
 
     @Override
     public Connection getConnection(JdbcContext jdbcContext) {
@@ -44,7 +44,7 @@ public class JdbcWrapperImpl implements JdbcWrapper {
                     /** 表名模式; 必须匹配存储在数据库中的表名;"%":匹配所有*/
                     jdbcContext.getTableNamePattern(),
                     /** 类型, 此处直接默认获取“表”类型*/
-                    new String[]{tableType});
+                    new String[]{TABLE_TYPE});
             /** 获取所有表*/
             while (resultSet.next()) {
                 JdbcTable jdbcTable = new JdbcTable();
