@@ -42,10 +42,10 @@ public class FreemarkerContext {
     private Map<String, Object> fieldsMap;
 
     /** 是否生成Dao接口文件，默认true*/
-    private boolean isCreateDaoFile = true;
+    private Boolean isCreateDaoFile = true;
 
     /** 是否生成Mybatis XML文件，默认true*/
-    private boolean isCreateMybatisXmlFile = true;
+    private Boolean isCreateMybatisXmlFile = true;
 
     public void setFileName(String fileName) {
         /** 将类名称首字母大写*/
@@ -114,12 +114,20 @@ public class FreemarkerContext {
         isCreateMybatisXmlFile = createMybatisXmlFile;
     }
 
-    public boolean isCreateDaoFile() {
+    public Boolean isCreateDaoFile() {
         return isCreateDaoFile;
     }
 
-    public boolean isCreateMybatisXmlFile() {
+    public Boolean isCreateMybatisXmlFile() {
         return isCreateMybatisXmlFile;
+    }
+
+    public void setCreateDaoFile(Boolean createDaoFile) {
+        isCreateDaoFile = createDaoFile;
+    }
+
+    public void setCreateMybatisXmlFile(Boolean createMybatisXmlFile) {
+        isCreateMybatisXmlFile = createMybatisXmlFile;
     }
 
     /** 将URL中的“\”替换成“/”*/
