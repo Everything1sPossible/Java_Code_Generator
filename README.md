@@ -13,4 +13,5 @@ Java代码生成器
 注：
 
 1.核心代码已经齐全，使用方式详见Test；后续可以添加WEB页面操作。
+
 2.使用者可以根据自己的需求添加相应的Freemarker模板，然后实现JavaTemplateInterface接口或者AbstractJavaTemplate抽象类，描述自己的业务逻辑。
