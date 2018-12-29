@@ -52,7 +52,11 @@ public class JdbcTableAdapter extends FreemarkerContext{
         Map<String, Object> fieldsMap = new HashMap<>();
         List<JdbcColumn> jdbcColumns = jdbcTable.getJdbcColumns();
         jdbcColumns.forEach(jdbcColumn -> {
-            fieldsMap.put(jdbcColumn.getColumnName(), jdbcColumn.getClassType());
+            String key = jdbcColumn.getColumnName();
+            if (getToCamel()) {
+                key = StringUtil.underlineToCamel(key);
+            }
+            fieldsMap.put(key, jdbcColumn.getClassType());
         });
         return fieldsMap;
     }

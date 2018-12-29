@@ -47,6 +47,9 @@ public class FreemarkerContext {
     /** 是否生成Mybatis XML文件，默认true*/
     private Boolean isCreateMybatisXmlFile = true;
 
+    /** 是否转换成驼峰字符串,用于读取数据库表字段时转化*/
+    private Boolean isToCamel = true;
+
     public void setFileName(String fileName) {
         /** 将类名称首字母大写*/
         this.fileName = StringUtil.firstToUpper(fileName);
@@ -103,6 +106,7 @@ public class FreemarkerContext {
     }
 
     public void setFieldsMap(Map<String, Object> fieldsMap) {
+        checkFieldsMap(fieldsMap);
         this.fieldsMap = fieldsMap;
     }
 
@@ -130,8 +134,26 @@ public class FreemarkerContext {
         isCreateMybatisXmlFile = createMybatisXmlFile;
     }
 
+    public Boolean getToCamel() {
+        return isToCamel;
+    }
+
+    public void setToCamel(Boolean toCamel) {
+        isToCamel = toCamel;
+    }
+
     /** 将URL中的“\”替换成“/”*/
     private String replace(String prefix) {
         return prefix.replace("\\", "/");
+    }
+
+    /** 检查Map Value是否是正确的Java类型*/
+    private void checkFieldsMap(Map<String, Object> fieldsMap) {
+        fieldsMap.forEach((k, v) -> {
+            Class<?> clazz = JavaTypeConvertor.getJavaTypes().get(String.valueOf(v));
+            if (clazz == null) {
+                throw new RuntimeException("请检查[" + k + "]的类型(value值)！");
+            }
+        });
     }
 }

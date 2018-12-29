@@ -32,11 +32,4 @@ public class JdbcTable {
         this.jdbcColumns = jdbcColumns;
     }
 
-    @Override
-    public String toString() {
-        return "JdbcTable{" +
-                "tableName='" + tableName + '\'' +
-                ", jdbcColumns=" + jdbcColumns +
-                '}';
-    }
 }
