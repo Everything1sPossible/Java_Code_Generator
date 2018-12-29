@@ -8,7 +8,7 @@ Java代码生成器
   直接调用JavaTemplateInterface接口方法，传递FreemarkerContext上下文类创建文件，可以创建实体类、DAO接口及Mybatis XML文件。
   
 2：读库方式：
-  屏蔽底层数据库类型，直接读取数据库所有表，创建相应的实体类、DAO接口及Mybatis XML文件。（此种方式使用需要引入具体数据库的驱动jar包，项目中已经默认包含MySQL的驱动jar包了）
+  屏蔽底层数据库类型，直接读取数据库所有表，也可以自定义读取单表，创建相应的实体类、DAO接口及Mybatis XML文件。（此种方式使用需要引入具体数据库的驱动jar包，项目中已经默认包含MySQL的驱动jar包了）
 
 注：
 
