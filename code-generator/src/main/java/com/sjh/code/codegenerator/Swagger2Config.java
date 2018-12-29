@@ -36,7 +36,7 @@ public class Swagger2Config {
                 .title("Swagger2接口文档")
                 //描述
                 .description("接口文档")
-                .termsOfServiceUrl("http://www.baidu.com")
+                .termsOfServiceUrl("http://localhost:8081/swagger-ui.html")
                 //创建人
                 .contact("千夜")
                 //版本号
